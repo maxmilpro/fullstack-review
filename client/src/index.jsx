@@ -13,11 +13,24 @@ class App extends React.Component {
 
   }
 
+  componentDidMount () {
+    this.getRepos();
+  }
+
   search (term) {
     console.log(`${term} was searched`);
-    $.post( 'http://localhost:1128/repos', {username: term}, () => {
+    $.post('http://localhost:1128/repos', {username: term}, () => {
       console.log('Sent username to the server');
+      this.getRepos();
     });
+  }
+
+  getRepos () {
+    $.get('http://localhost:1128/repos', (repos) => {
+      this.setState({
+        repos: repos
+      })
+    })
   }
 
   render () {

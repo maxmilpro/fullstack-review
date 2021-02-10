@@ -22,7 +22,6 @@ app.post('/repos', function (req, res) {
 app.get('/repos', function (req, res) {
   db.retrieve()
   .then((result) => {
-    console.log(result)
     res.send(result);
   })
 });
