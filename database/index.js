@@ -3,14 +3,32 @@ mongoose.connect('mongodb://localhost/fetcher');
 
 let repoSchema = mongoose.Schema({
   // TODO: your schema here!
+  githubId: {
+    type: String,
+    unique: true
+  },
+  name: String,
+  htmlUrl: String,
+  forks: Number,
+  owner: String
 });
 
 let Repo = mongoose.model('Repo', repoSchema);
 
-let save = (/* TODO */) => {
-  // TODO: Your code here
-  // This function should save a repo or repos to
-  // the MongoDB
+let save = (repos) => {
+  console.log(repos);
+  repos.forEach((repo) => {
+    const newRepo = new Repo({
+      githubId: repo.id,
+      name: repo.name,
+      htmlUrl: repo.html_url,
+      forks: repo.forks,
+      owner: repo.owner.login
+    })
+    newRepo.save((err, repo) => {
+      if (err) console.dir(err);
+    })
+  })
 }
 
 module.exports.save = save;
