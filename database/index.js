@@ -31,10 +31,11 @@ let save = (repos) => {
   })
 }
 
-let retrieve = () {
-  Repo.aggregate([
+let retrieve = () => {
+  return Repo.aggregate([
     {$sort: {forks: -1, name: 1}},
     {$limit: 25}
   ])
 }
 module.exports.save = save;
+module.exports.retrieve = retrieve;
