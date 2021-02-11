@@ -1,8 +1,10 @@
 const github = require('../helpers/github.js');
 const db = require('../database/index.js');
+const cors = require('cors');
 const express = require('express');
 let app = express();
 
+app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname + '/../client/dist'));
 
