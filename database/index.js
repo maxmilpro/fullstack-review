@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/fetcher');
+mongoose.connect(`mongodb+srv://dbUser:${process.env.CLUSTER}@cluster0.i6urc.mongodb.net/fetcher?retryWrites=true&w=majority`);
 
 let repoSchema = mongoose.Schema({
   // TODO: your schema here!
