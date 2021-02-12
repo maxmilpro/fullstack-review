@@ -19,14 +19,14 @@ class App extends React.Component {
 
   search (term) {
     console.log(`${term} was searched`);
-    $.post('http://localhost:1128/repos', {username: term}, () => {
+    $.post('https://thawing-reef-39245.herokuapp.com/repos', {username: term}, () => {
       console.log('Sent username to the server');
       this.getRepos();
     });
   }
 
   getRepos () {
-    $.get('http://localhost:1128/repos', (repos) => {
+    $.get('https://thawing-reef-39245.herokuapp.com/repos', (repos) => {
       this.setState({
         repos: repos
       })
