@@ -27,7 +27,7 @@ let Repo = mongoose.model('Repo', repoSchema);
 let save = (repos) => {
   console.log('ATTEMPTING TO SAVE THE REPOS--------------->')
   repos.forEach((repo) => {
-    Vvar newRepo = new Repo({
+    var newRepo = new Repo({
       githubId: repo.id,
       name: repo.name,
       htmlUrl: repo.html_url,
