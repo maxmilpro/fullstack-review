@@ -25,15 +25,16 @@ let repoSchema = mongoose.Schema({
 let Repo = mongoose.model('Repo', repoSchema);
 
 let save = (repos) => {
-  console.log(repos);
+  console.log('ATTEMPTING TO SAVE THE REPOS--------------->')
   repos.forEach((repo) => {
-    const newRepo = new Repo({
+    Vvar newRepo = new Repo({
       githubId: repo.id,
       name: repo.name,
       htmlUrl: repo.html_url,
       forks: repo.forks,
       owner: repo.owner.login
     })
+    console.log(`INSERTING NEW REPO: ${newRepo}----------->`)
     newRepo.save((err, repo) => {
       if (err) console.dir(err);
     })
